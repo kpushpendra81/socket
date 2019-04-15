@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+   	<head>
+		<title>Hello world</title>
+   	</head>
+   	<script src = "/socket.io/socket.io.js"></script>
+   
+   	<body>
+   		<p>Hello world </p>
+   		<span id='serverMsg'></span>
+   	</body>
+   	<script>
+		var socket = io();
+		socket.on('testerEvent', (data) => {
+			// document.write(data)
+			let span = document.getElementById('serverMsg');
+			span.innerHTML = data.description;
+		});
+      socket.emit('clientEvent', 'Sent an event from the client!');  
+   	</script>
+</html>
